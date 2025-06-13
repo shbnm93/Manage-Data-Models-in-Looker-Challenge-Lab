@@ -1,0 +1,103 @@
+Go back to the users.view file and then find the dimension name: first_name, last_name, email, id, latitude, and longitude
+
+Once you find the dimensions please add add below parameter under above every dimension
+
+
+view: users {
+  sql_table_name: `cloud-training-demos.looker_ecomm.users`
+    ;;
+  drill_fields: [id]
+
+  dimension: id {
+    primary_key: yes
+    type: number
+    hidden: yes
+    sql: ${TABLE}.id ;;
+  }
+
+  dimension: age {
+    type: number
+    sql: ${TABLE}.age ;;
+  }
+
+  dimension: city {
+    type: string
+    sql: ${TABLE}.city ;;
+  }
+
+  dimension: country {
+    type: string
+    map_layer_name: countries
+    sql: ${TABLE}.country ;;
+  }
+
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.created_at ;;
+  }
+
+  dimension: email {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.email ;;
+  }
+
+  dimension: first_name {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.first_name ;;
+  }
+
+  dimension: gender {
+    type: string
+    sql: ${TABLE}.gender ;;
+  }
+
+  dimension: last_name {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.last_name ;;
+  }
+
+  dimension: latitude {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.latitude ;;
+  }
+
+  dimension: longitude {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.longitude ;;
+  }
+
+  dimension: state {
+    type: string
+    sql: ${TABLE}.state ;;
+    map_layer_name: us_states
+  }
+
+  dimension: traffic_source {
+    type: string
+    sql: ${TABLE}.traffic_source ;;
+  }
+
+  dimension: zip {
+    type: zipcode
+    sql: ${TABLE}.zip ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [id, last_name, first_name, events.count, order_items.count]
+  }
+}
