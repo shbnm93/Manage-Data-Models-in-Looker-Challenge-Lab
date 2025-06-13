@@ -1,0 +1,28 @@
+Task 2:
+
+Start by copying the following code into the training_ecommerce.model file.
+(Make sure to change the NAME_DATAGROUP )
+
+explore: +order_items {
+label: ""
+aggregate_table: weekly_aggregate_revenue_profit {
+query: {
+dimensions: [order_items.created_date]
+measures: [order_items.total_revenue, order_items.total_profit]
+}
+materialization: {
+datagroup_trigger: NAME_DATAGROUP
+increment_key: "created_date"
+}
+}
+}
+
+
+Click on save > Validate LookMl and then Commit Changes and Push, then click Deploy to Production.
+
+
+Creating a visualization:
+
+From the Order Items Explore, select Order Items > Created Date > Month, Total Revenue, and Total Profit. Make sure your Created Month column is in Ascending order
+Select a Line visualization. Click on run.
+Save the visualization as a look and give the name to the look as mentioned in the lab instruction page.
