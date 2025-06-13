@@ -1,0 +1,9 @@
+Part 2:
+
+Navigate to the training_ecommerce.model add below lines of code. (MAke sure to change the NAME_DATAGROUP)
+
+datagroup: NAME_DATAGROUP {
+max_cache_age: "168 hours"
+}
+
+persist_with: NAME_DATAGROUP
