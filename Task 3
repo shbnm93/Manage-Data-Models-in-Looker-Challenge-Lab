@@ -1,0 +1,41 @@
+Task 3:
+
+Create a new view file and give a name as mentioned in the lab instruction page.
+
+Remove all default code and add this code in the file by replacing the view file name with VIEW_NAME:
+
+
+view: VIEW_NAME {
+extension: required
+
+dimension: id {
+primary_key: yes
+type: number
+sql: ${TABLE}.id ;;
+}
+
+dimension: email {
+type: string
+sql: ${TABLE}.email ;;
+}
+
+dimension: first_name {
+type: string
+sql: ${TABLE}.first_name ;;
+}
+
+dimension: last_name {
+type: string
+sql: ${TABLE}.last_name ;;
+}
+
+dimension: latitude {
+type: number
+sql: ${TABLE}.latitude ;;
+}
+
+dimension: longitude {
+type: number
+sql: ${TABLE}.longitude ;;
+}
+}
